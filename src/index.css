@@ -12,19 +12,15 @@
   -webkit-text-size-adjust: 100%;
 }
 
-
-
-
 h1 {
   font-size: 2.5em;
   line-height: 1.1;
 }
 
-.heading{
+.heading {
   text-align: center;
-
 }
-.search_bar{
+.search_bar {
   padding: 0.8rem 3.4rem;
   font-size: 1.1em;
   border-radius: 50px;
@@ -32,18 +28,18 @@ h1 {
   margin-bottom: 2.5rem;
 }
 
-.container{
+.container {
   padding-top: 2rem;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
-.employee_list_container{
+.employee_list_container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   align-items: center;
-  gap:1rem;
+  column-gap: 2rem;
 }
 
 @media (prefers-color-scheme: light) {
@@ -59,3 +55,20 @@ h1 {
   }
 }
 
+@media only screen and (max-width: 700px) {
+  .employee_list_container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .employee_list_container {
+    grid-template-columns: auto;
+  }
+  .search_bar {
+    padding: 0.8rem 2rem;
+  }
+  .heading{
+    font-size: 1.7em;
+  }
+}
