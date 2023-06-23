@@ -42,6 +42,18 @@ h1 {
   column-gap: 2rem;
 }
 
+.search_container{
+  position: relative;
+}
+
+.search_icon{
+  position: absolute;
+  right: 11px;
+  top: 0;
+  bottom: 43px;
+  margin: auto 0;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
