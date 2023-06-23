@@ -1,0 +1,49 @@
+:root{
+    --id-light: rgb(0, 0, 0, 0.87);
+    --id-font: white
+}
+.item_container{
+    border: 2px solid black;
+    padding: 1rem;
+    min-height: 128px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.avatar{
+    height: 128px;
+    width: 128px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 15px;
+}
+
+.id{
+    background-color: var(--id-light) ;
+    color: var(--id-font);
+    position:absolute;
+    padding: 1rem;
+    font-weight: 2ss00;
+    border-radius: 100%;
+    top:-10px;
+    right: -10px;
+}
+
+.inner_id_container{
+    position: relative;
+}
+
+.id_number{
+    position: absolute;
+    top: 50%;  /* position the top  edge of the element at the middle of the parent */
+    left: 50%; /* position the left edge of the element at the middle of the parent */
+
+    transform: translate(-50%, -50%)
+}
+
+.first_name{
+    font-size: 1.2em;
+    text-align: center;
+    margin-top: 5px;
+    font-weight: 400;
+}

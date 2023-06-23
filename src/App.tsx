@@ -1,42 +1,65 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { getData } from "./api/api";
 import { EmployeeData } from "./types";
+import ListItem from "./components/ListItem";
 
-function getFilteredItems(query:string, items:EmployeeData[]){
-  console.log("inside the filter function")
-  if(!query){
-    return items
+function getFilteredItems(query: string, items: EmployeeData[]) {
+  if (!query) {
+    return items;
   }
-  return items.filter((employee:EmployeeData) => employee.first_name.includes(query))
+  return items.filter((employee: EmployeeData) =>
+    employee.first_name.includes(query)
+  );
 }
 
 function App() {
   const [employeeData, setEmployeeData] = useState<EmployeeData[] | null>(null);
-  const [query, setQuery] = useState<string>("")
-  useEffect(()=>{
-    async function startFetch(){
+  const [query, setQuery] = useState<string>("");
+  useEffect(() => {
+    async function startFetch() {
       const result = await getData();
-      if(!ignore){
+      if (!ignore) {
         setEmployeeData(result);
       }
     }
     let ignore = false;
     startFetch();
-    return () =>{
+    return () => {
       ignore = true;
-    }
-  },[])
-  let filteredEmployeeList 
-  if(employeeData){
+    };
+  }, []);
+  let filteredEmployeeList;
+  if (employeeData) {
     filteredEmployeeList = getFilteredItems(query, employeeData);
   }
 
   return (
     <>
-      <input type="text" onChange={(e) => setQuery(e.target.value)} /> 
-      {filteredEmployeeList?.map((employee) => <div>{employee.first_name}</div>)}
+      <h1 className="heading">Employee List</h1>
+      <section className="container">
+        <input
+          type="text"
+          className="search_bar"
+          placeholder="Search..."
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <section className="employee_list_container">
+          {filteredEmployeeList?.map(
+            ({ id, avatar, email, first_name, last_name }) => (
+              <ListItem
+                key={id}
+                id={id}
+                avatar={avatar}
+                email={email}
+                first_name={first_name}
+                last_name={last_name}
+              />
+            )
+          )}
+        </section>
+      </section>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
